@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/styles.css">
+    <script type="module" src="/js/file-upload.mjs"></script>
+    <title>Upload</title>
+</head>
+<body>
+    <div class="container">
+        <button id="deleteAll_btn" class="button delete-all-button" aria-label="Delete all content">Delete All</button>
+        
+        <header>
+            <h1>Upload Your Files</h1>
+        </header>
+        
+        <main id="main_content"></main>
+        
+        <footer class="bottom-nav">
+            <button id="home_btn" class="nav-button" aria-label="Home">🏠</button>
+            <button id="upload_btn" class="nav-button" aria-label="Upload">💾</button>
+            <input type="file" id="fileInput" style="display: none;" multiple>
+        </footer>
+        
+        <div id="imageModal" class="modal hidden">
+            <div class="modal-content">
+                <span id="closeModal" class="close">&times;</span>
+                <h2 id="modalFileName" class="modal-filename"></h2>
+                <img id="modalImage" class="modal-image" src="" alt="Image preview">
+            </div>
+        </div>
+    </div>
+</body>
+</html>

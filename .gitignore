@@ -1,0 +1,10 @@
+node_modules
+
+app/backend/logs
+app/backend/uploads
+
+coverage
+
+.env
+
+.vscode

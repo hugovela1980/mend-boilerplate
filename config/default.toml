@@ -1,0 +1,8 @@
+[server]
+port = 5000
+host = "0.0.0.0"
+logFilePath = "app/backend/logs/http.log"
+uploadDir = "app/backend/uploads"
+
+[app]
+startUpMessage = "Server started and listening on {0}"

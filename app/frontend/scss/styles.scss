@@ -1,0 +1,288 @@
+// Basic Reset
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+// Base Styles
+html, body {
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.6;
+    height: 100%;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.button-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.button {
+    border: none;
+    border-radius: 5px;
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
+    &:focus {
+        outline: 2px solid;
+    }
+}
+
+header {
+    text-align: center;
+    background-color: #333;
+    color: #fff;
+    padding: 1rem;
+    z-index: 10;
+    position: sticky;
+    top: 0;
+}
+
+main {
+    flex: 1;
+    overflow-y: auto;
+    scrollbar-width: none;
+    padding: 2rem;
+    padding-bottom: 7rem;
+}
+
+// Modifier classes
+.delete-all-button {
+    @extend .button;
+    position: absolute;
+    right: 0;
+    top: 5rem;
+    background-color: #ff4444;
+    color: #333;
+    border: none;
+    border-radius: 5px;
+    width:7rem;
+    height:3rem;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+
+    &:hover {
+        color: white;
+    }
+}
+
+.preview-button {
+    @extend .button;
+    background-color: steelblue;
+    
+    &:hover {
+        color: #fff;
+    }
+}
+
+.delete-button {
+    @extend .button;
+    background-color: #ff4444;
+
+    &:hover {
+        color: #fff;
+    }
+}
+
+.content {
+    padding: 1rem;
+    background-color: #e4e4e4;
+    border-radius: 5px;
+    margin-bottom: 1rem;
+
+    .file-info {
+        padding-bottom: 1rem;
+        font-size: 1.1rem;
+        white-space: nowrap;
+        overflow-x: auto;
+        overflow-y: hidden;
+        max-width: 100%;
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+
+        &::-webkit-scrollbar {
+            display: none;
+        }
+    }
+}
+
+.bottom-nav {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 1rem 0;
+    background-color: #333;
+    color: #fff;
+
+    .nav-button {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: none;
+        border: none;
+        color: inherit;
+        font-size: 2.5rem;
+        cursor: pointer;
+        outline: none;
+
+        &:hover {
+            color: #ddd;
+        }
+
+        &:focus {
+            outline: 2px solid #fff;
+        }
+    }
+}
+
+#imageModal {
+    &.modal {
+        display: none;
+        position: fixed;
+        z-index: 1000;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.7);
+
+        &.show {
+            display: block;
+        }
+    }
+
+    .modal-content {
+        position: relative;
+        margin: 10% auto;
+        padding: 20px;
+        width: 90%;
+        max-width: 500px;
+        background-color: #fff;
+        text-align: center;
+        border-radius: 10px;
+        
+        #modalFileName {
+            margin-bottom: 10px;
+            color: #333;
+        }
+        
+        #modalImage {
+            width: auto;
+            height: auto;
+            max-width: 100%;
+            max-height: 80vh;
+            border-radius: 8px;
+            object-fit: contain;
+        }
+        
+        .close {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            font-size: 24px;
+            font-weight: bold;
+            color: #333;
+            cursor: pointer;
+            
+            &:hover {
+                color: #ff0000;
+            }
+        }
+
+        @media (min-width: 600px) {
+            width: 80%;
+            max-width: 600px;
+
+            #modalImage {
+                max-width: 90%;
+                max-height: 70vh;
+            }
+        }
+
+        @media (min-width: 760px) {
+            width: 70%;
+            max-width: 700px;
+
+            #modalImage {
+                max-width: 90%;
+                max-height: 60vh;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            width: 60%;
+            max-width: 800px;
+
+            #modalImage {
+                max-width: 100%;
+                max-height: 50vh;
+            }
+        }
+    }
+}
+
+// Media Query for Small Tablets (min-width: 600px)
+@media (min-width: 600px) {
+    .delete-all-button {
+        font-size: 1.25rem;
+        width: 8rem;
+        height: 3rem;
+    }
+
+    main {
+        padding: 2rem;
+        padding-bottom: 7rem;
+    }
+}
+
+// Media Query for Tablets (760 and up)
+@media (min-width: 760px) {
+    .content {
+        max-width: 700px;
+        margin: 1rem auto;
+    }
+
+    .delete-all-button {
+        width: 8rem;
+        height: 3.5rem;
+        font-size: 1.35rem;
+    }
+}
+
+// Media Query for Destops (1024px and up)
+@media (min-width: 1024px) {
+    header, footer {
+        padding: 1.5rem;
+    }
+
+    .delete-all-button {
+        top: 6.15rem;
+    }
+
+    .content {
+        max-width: 900px;
+    }
+}

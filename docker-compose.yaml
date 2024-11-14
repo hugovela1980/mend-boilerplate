@@ -1,0 +1,17 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: ${DOCKERFILE_NAME}
+    image: node-express-mongodb-docker-boilerplate:latest
+    container_name: mend-dev-cont
+    volumes:
+      - ./:/usr/local/app
+    working_dir: /usr/local/app
+    ports:
+      - "${HOST_PORT}:${CONT_PORT}"
+    environment:
+      - NODE_ENV=${NODE_ENV}
+      - CONT_PORT=${CONT_PORT}
+      - HOST_PORT=${HOST_PORT}
+      - WELCOME_MESSAGE=Hello World
