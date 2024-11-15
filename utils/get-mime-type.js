@@ -11,6 +11,8 @@ const getMimeType = (str) => {
   else if (fileExt === 'webp') return 'image/webp';
   else if (fileExt === 'ico') return 'image/x-icon';
   else if (fileExt === 'pdf') return 'application/pdf';
+  else if (fileExt === 'doc') return 'application/msword';
+  else if (fileExt === 'docx') return 'application/vnd.openxmlformats-officedocument.wordprocessingml.document';
 }
 
 export default getMimeType;

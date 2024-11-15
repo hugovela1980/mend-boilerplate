@@ -1,2 +1,5 @@
 [server]
 hostPort = "HOST_PORT"
+awsInstanceIP = "AWS_INSTANCE_IP"
+logFilePath = "LOG_FILE_PATH"
+uploadsDir = "UPLOADS_DIR"

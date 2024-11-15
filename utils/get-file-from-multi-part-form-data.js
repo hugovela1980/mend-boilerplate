@@ -1,18 +1,18 @@
-const getFilesFromMultiPartFormData = (headers, buffer) => {
+const getFilesFromMultiPartFormData = (headers, fdBuffer) => {
     const files = [];
 
     // Get form-data boundary from request headers
     const boundary = `--${headers['content-type'].split('=')[1]}`
     const boundaryBuffer = Buffer.from(boundary);
-    let end = buffer.indexOf(boundaryBuffer, 0);
+    let end = fdBuffer.indexOf(boundaryBuffer, 0);
     let start = 0;
     const formDataChunks = [];
 
     // separate the form-data buffer into individual formDataChunks
     while (end !== -1) {
-        formDataChunks.push(buffer.subarray(start, end));
+        formDataChunks.push(fdBuffer.subarray(start, end));
         start = end + boundaryBuffer.length;
-        end = buffer.indexOf(boundaryBuffer, start);
+        end = fdBuffer.indexOf(boundaryBuffer, start);
     }
 
     // extract file name and content from each form-data chunk

@@ -1,5 +1,6 @@
 import express from 'express';
 import path from 'path';
+import cors from 'cors';
 import favicon from 'serve-favicon';
 import siteRouter from '../routes/site.js';
 import getRootDirectory from '../../../utils/get-root-directory.js';
@@ -20,6 +21,7 @@ app.use(express.static(publicDirPath));
 
 
 // Set up middleware
+app.use(cors());
 app.use(favicon(path.join(publicDirPath, 'favicon.ico')));
 app.use(express.json());
 

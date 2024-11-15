@@ -1,5 +1,8 @@
+import fs from 'fs';
+import path from 'path';
 import pino from 'pino';
 import pinoHttp from 'pino-http';
+import getRootDirectory from './get-root-directory.js';
 
 const createLogger = () => {
   const options = {
