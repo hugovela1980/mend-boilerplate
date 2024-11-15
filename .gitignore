@@ -1,10 +1,10 @@
 node_modules
 
-app/backend/logs
-app/backend/uploads
+# app/backend/logs
+# app/backend/uploads
 
-coverage
+# coverage
 
-.env
+# .env
 
 .vscode

@@ -3,5 +3,5 @@ WORKDIR /usr/local/app
 COPY package*.json ./
 RUN npm install --only=production
 COPY . .
-EXPOSE $PORT
+EXPOSE $$CONT_PORT
 CMD ["npm", "run", "start"]

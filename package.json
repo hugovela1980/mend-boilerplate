@@ -6,15 +6,12 @@
   "scripts": {
     "test": "jest",
     "coverage": "jest --coverage",
-    "prod_cont": "cross-env NODE_ENV=production ./startup_scripts/run-docker-bash.sh",
-    "prod_cont_ps": "cross-env NODE_ENV=production powershell -ExecutionPolicy Bypass -File ./startup_scripts/run-docker-powershell.ps1",
-    "dev_cont": "cross-env NODE_ENV=container ./startup_scripts/run-docker-bash.sh",
-    "dev_cont_ps": "cross-env NODE_ENV=container powershell -ExecutionPolicy Bypass -File ./startup_scripts/run-docker-powershell.ps1",
-    "local_dev": "cross-env NODE_ENV=development ./startup_scripts/run-local-bash.sh",
-    "local_dev_ps": "cross-env NODE_ENV=development powershell -ExecutionPolicy Bypass -File ./startup_scripts/run-local-powershell.ps1",
-    "start": "node --env-file .env app/backend/server.js -L -e js,mjs,html,ejs,css,toml",
+    "start_cont": "docker-compose --env-file .env.production up --build",
+    "start": "node app/backend/server.js",
+    "dev_cont": "docker-compose up --build",
+    "dev": "nodemon app/backend/server.js -L -e js,mjs,html,ejs,css,toml",
     "stop": "docker-compose down",
-    "dev": "nodemon --env-file .env app/backend/server.js -L -e js,mjs,html,ejs,css,toml"
+    "local_dev": "nodemon --env-file .env.local app/backend/server.js -L -e js,mjs,html,ejs,css,toml"
   },
   "keywords": [],
   "author": "",

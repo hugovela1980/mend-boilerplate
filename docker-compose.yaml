@@ -3,8 +3,8 @@ services:
     build:
       context: .
       dockerfile: ${DOCKERFILE_NAME}
-    image: node-express-mongodb-docker-boilerplate:latest
-    container_name: mend-dev-cont
+    image: hugovela1980/node-express-mongodb-docker-boilerplate:1.0
+    container_name: mend-boilerplate-cont
     volumes:
       - ./:/usr/local/app
     working_dir: /usr/local/app
