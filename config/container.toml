@@ -1,2 +1,2 @@
 [server]
-environment = "container"
+environment = "development container"

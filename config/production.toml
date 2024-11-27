@@ -1,3 +1,4 @@
 [server]
-environment = "production"
+environment = "production container"
 host = "54.183.123.15"
+browserHyperlinkHost = "http://54.183.123.15:" 

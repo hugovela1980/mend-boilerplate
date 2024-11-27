@@ -1,5 +1,5 @@
 import express from 'express';
-import upload from '../controllers/storageController.js'
+import upload from '../middleware/upload.js'
 import log from '../middleware/log.js'
 import {
     renderIndex,
@@ -14,8 +14,8 @@ const router = new express.Router();
 
 router.get('/', renderIndex);
 router.get('/upload', renderUploadPage);
-router.get('/filenames', getFileNamesHandler);
-router.post('/upload_files', upload.array('files', 10), uploadFilesHandler);
+router.get('/filenames', log, getFileNamesHandler);
+router.post('/upload_files', log, upload, uploadFilesHandler);
 router.get('/preview', log, previewFileHandler);
 router.delete('/delete', log, deleteFileHandler);
 

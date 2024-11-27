@@ -1,7 +1,17 @@
 [server]
 port = 5000
 host = "0.0.0.0"
+browserHyperlinkHost = "http://localhost:"
+isDevBrowserOn = false
+devBrowserPage = '/upload'
+startUpMessage = "Server running in a {0} environment and listening on {1}"
 
 
 [app]
-startUpMessage = "Server started and listening on {0}"
+logFilePath = "./app/backend/logs/http.log"
+uploadsDir = "./app/backend/uploads"
+validUploadFileTypes = "jpg,png,pdf,doc,docx"
+
+[express]
+publicDirPath = "./app/frontend"
+viewsDirPath = "./app/backend/templates/views"

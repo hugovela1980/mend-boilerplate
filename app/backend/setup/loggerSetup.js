@@ -1,16 +1,9 @@
 import path from 'path';
 import config from 'config';
-import { createLogger, createHttpLogger } from '../../../utils/create-loggers.js';
-import getRootDirectory from '../../../utils/get-root-directory.js';
+import { createLogger, createHttpLogger } from '../controllers/loggerController.js';
+import getProjectRoot from '../../../utils/get-project-root.js';
 
-const { logger, loggerCleanup } = createLogger();
+const { logger } = createLogger();
+const { httpLogger } = createHttpLogger(path.join(getProjectRoot(import.meta.dirname), config.get('app.logFilePath')));
 
-const httpLogPath = path.join(getRootDirectory(import.meta.dirname), config.get('server.logFilePath'));
-const { httpLogger, httpLoggerCleanup } = createHttpLogger(httpLogPath);
-
-export {
-    logger,
-    loggerCleanup,
-    httpLogger,
-    httpLoggerCleanup,
-}
+export { logger, httpLogger };

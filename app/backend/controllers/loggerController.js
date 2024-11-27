@@ -1,8 +1,5 @@
-import fs from 'fs';
-import path from 'path';
 import pino from 'pino';
 import pinoHttp from 'pino-http';
-import getRootDirectory from './get-root-directory.js';
 
 const createLogger = () => {
   const options = {
@@ -25,10 +22,8 @@ const createLogger = () => {
   });
 
   const logger = pino(options, consoleStream);
-
-  const loggerCleanup = () => consoleStream.end();
   
-  return { logger, loggerCleanup };
+  return { logger };
 };
 
 const createHttpLogger = (filePath) => {
@@ -55,12 +50,7 @@ const createHttpLogger = (filePath) => {
 
   const httpLogger = pinoHttp(options, fileStream);
 
-  const httpLoggerCleanup = () => {
-    fileStream.end();
-    consoleStream.end();
-  };
-
-  return { httpLogger, httpLoggerCleanup };
+  return { httpLogger };
 };
 
 export { createLogger, createHttpLogger };

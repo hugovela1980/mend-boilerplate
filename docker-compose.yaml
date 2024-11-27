@@ -14,5 +14,3 @@ services:
       - NODE_ENV=${NODE_ENV}
       - CONT_PORT=${CONT_PORT}
       - HOST_PORT=${HOST_PORT}
-      - LOG_FILE_PATH=${LOG_FILE_PATH}
-      - UPLOADS_DIR=${UPLOADS_DIR}

@@ -1,3 +1,4 @@
 [server]
-environment = "local"
+environment = "local development"
 port = 0
+isDevBrowserOn = true

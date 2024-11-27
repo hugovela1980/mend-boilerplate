@@ -2,15 +2,16 @@ import express from 'express';
 import path from 'path';
 import cors from 'cors';
 import favicon from 'serve-favicon';
+import config from 'config';
 import siteRouter from '../routes/site.js';
-import getRootDirectory from '../../../utils/get-root-directory.js';
+import getProjectRoot from '../../../utils/get-project-root.js';
 
 const app = express();
 
-// Define paths for express config
-const rootDir = getRootDirectory(import.meta.dirname);
-const publicDirPath = path.join(rootDir, 'app', 'frontend');
-const viewsDirPath = path.join(rootDir, 'app', 'backend', 'templates', 'views');
+// // Define paths for express configuration
+const rootDir = getProjectRoot(import.meta.dirname);
+const publicDirPath = path.join(rootDir, config.get('express.publicDirPath'));
+const viewsDirPath = path.join(rootDir, config.get('express.viewsDirPath'));
 
 // Set up EJS engine and views location
 app.set('view engine', 'ejs');
@@ -22,7 +23,7 @@ app.use(express.static(publicDirPath));
 
 // Set up middleware
 app.use(cors());
-app.use(favicon(path.join(publicDirPath, 'favicon.ico')));
+app.use(favicon(path.join(publicDirPath, './favicon.ico')));
 app.use(express.json());
 
 // Set up router to serve data
